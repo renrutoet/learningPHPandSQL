@@ -37,10 +37,15 @@
     <section>
 
     <?php 
-    
+    //this feels too messy
     foreach($pizzas as $pizza){
         echo htmlspecialchars($pizza['title'])." <br>";
-        echo htmlspecialchars($pizza['ingredients'])." <br>";
+        echo "<ul>";
+        foreach(explode(",",$pizza['ingredients']) as $ing){
+            echo "<li> ".htmlspecialchars($ing). " </li>";
+        }
+        
+        echo "</ul>";
         echo '<br>';
     }
 
