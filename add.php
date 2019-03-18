@@ -6,9 +6,7 @@
     $ingredients = "";
 
     if(isset($_POST['submit'])){
-        //echo htmlspecialchars($_POST['title']." ");
-        //echo htmlspecialchars($_POST['ingredients']." ");
-    }
+    
 
     if(empty($_POST['email'])){
         $errors['email'] = "An email is required <br>";
@@ -39,10 +37,11 @@
     else
     {
         $ingredients = $_POST['ingredients'];
-        if(!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/',$title)){
+        if(!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/',$ingredients)){
             $errors['ingredients'] =  'Ingredients must be comma seperated letters and spaces only';
         }
     }
+}
 
 ?>
 
@@ -56,17 +55,17 @@
     <form action="add.php" method="POST">
         <div class="input-field">
             <label for="email">Email Address:</label>
-            <input type="text" name="email" value="<?php echo $email ?>" placeholder="Enter email">
+            <input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>" placeholder="Enter email">
             <div class="error"><?php echo $errors['email']; ?></div>
         </div class="input-field">
         <div>
             <label for="title">Pizza Title:</label>
-            <input type="text" name="title" value="<?php echo $title ?>" placeholder="Enter title">
+            <input type="text" name="title" value="<?php echo htmlspecialchars($title) ?>" placeholder="Enter title">
             <div class="error"><?php echo $errors['title']; ?></div>
         <div class="input-field">
         </div>
             <label for="ingredients">Ingredients (Comma seperated):</label>
-            <input type="text" name="ingredients" value="<?php echo $ingredients ?>" placeholder="Enter ingredients">
+            <input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?>" placeholder="Enter ingredients">
             <div class="error"><?php echo $errors['ingredients']; ?></div>
         </div>
         <div class="input-field">
