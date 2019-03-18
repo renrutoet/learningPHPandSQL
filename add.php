@@ -41,6 +41,13 @@
             $errors['ingredients'] =  'Ingredients must be comma seperated letters and spaces only';
         }
     }
+
+    if(!array_filter($errors)){
+        header('location:index.php');
+    }
+    else {
+        echo "errors found";
+    }
 }
 
 ?>
