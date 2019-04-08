@@ -1,14 +1,8 @@
 <?php
 
-    //connection
-    $conn = mysqli_connect('localhost','teo','test123','ninja_pizza');
-
-    if(!$conn){
-        echo "Connection Error: " . mysqli_connect_error();
-    }
+    include('config/db_connect.php');
 
     //write query for all pizzas
-
     $sql = 'SELECT title,ingredients,id FROM pizzas ORDER BY created_at';
 
     //make query and get result
@@ -38,6 +32,7 @@
 
     <?php 
     //this feels too messy
+    
     foreach($pizzas as $pizza){
         echo htmlspecialchars($pizza['title'])." <br>";
         echo "<ul>";
